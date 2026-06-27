@@ -8,371 +8,330 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 
 <body>
 
-<!-- HERO SECTION -->
 
-<section class="hero">
 
-    <div class="container">
+    <!-- HERO SECTION -->
 
-        <div class="row align-items-center">
+    <section class="hero">
 
-            <div class="col-lg-6">
+        <div class="container">
 
-                <h1>AI Heart Disease Prediction</h1>
+            <div class="row align-items-center">
 
-                <p class="lead">
+                <div class="col-lg-6">
 
-                    Predict heart disease risk using a Machine Learning model trained on clinical patient records.
+                    <h1>AI Heart Disease Prediction</h1>
 
-                </p>
+                    <p class="lead">
 
-                <button
-                    id="startBtn"
-                    class="btn btn-danger btn-lg">
+                        Predict heart disease risk using a Machine Learning model trained on clinical patient records.
 
-                    Start Prediction
+                    </p>
 
-                </button>
+                    <button id="startBtn" class="btn btn-danger btn-lg">
 
-            </div>
+                        Start Prediction
 
-            <div class="col-lg-6 text-center">
+                    </button>
 
-                <img
-                    src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900"
-                    class="img-fluid hero-img">
+                </div>
+
+                <div class="col-lg-6 text-center">
+
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=900"
+                        class="img-fluid hero-img">
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+    <!-- FORM SECTION -->
 
-<!-- FORM SECTION -->
+    <section id="prediction-section">
 
-<section id="prediction-section">
+        <div class="container">
 
-<div class="container">
+            <div class="card shadow-lg p-5">
 
-<div class="card shadow-lg p-5">
+                <h2 class="text-center mb-4">
 
-<h2 class="text-center mb-4">
+                    Patient Information
 
-Patient Information
+                </h2>
 
-</h2>
+                <form id="predictionForm">
 
-<form id="predictionForm">
+                    <div class="row">
 
-<div class="row">
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Age
 
-Age
+                            </label>
 
-</label>
+                            <input type="number" name="age" class="form-control" required>
 
-<input
-type="number"
-name="age"
-class="form-control"
-required>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Gender
 
-Gender
+                            </label>
 
-</label>
+                            <select name="sex" class="form-select">
 
-<select
-name="sex"
-class="form-select">
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
 
-<option value="1">Male</option>
-<option value="0">Female</option>
+                            </select>
 
-</select>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Chest Pain Type
 
-Chest Pain Type
+                            </label>
 
-</label>
+                            <select name="cp" class="form-select">
 
-<select
-name="cp"
-class="form-select">
+                                <option value="0">Typical Angina</option>
+                                <option value="1">Atypical Angina</option>
+                                <option value="2">Non-anginal Pain</option>
+                                <option value="3">Asymptomatic</option>
 
-<option value="0">Typical Angina</option>
-<option value="1">Atypical Angina</option>
-<option value="2">Non-anginal Pain</option>
-<option value="3">Asymptomatic</option>
+                            </select>
 
-</select>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Resting Blood Pressure
 
-Resting Blood Pressure
+                            </label>
 
-</label>
+                            <input type="number" name="trestbps" class="form-control" required>
 
-<input
-type="number"
-name="trestbps"
-class="form-control"
-required>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Cholesterol
 
-Cholesterol
+                            </label>
 
-</label>
+                            <input type="number" name="chol" class="form-control" required>
 
-<input
-type="number"
-name="chol"
-class="form-control"
-required>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Fasting Blood Sugar > 120 mg/dL
 
-Fasting Blood Sugar > 120 mg/dL
+                            </label>
 
-</label>
+                            <select name="fbs" class="form-select">
 
-<select
-name="fbs"
-class="form-select">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
 
-<option value="0">No</option>
-<option value="1">Yes</option>
+                            </select>
 
-</select>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Resting ECG
 
-Resting ECG
+                            </label>
 
-</label>
+                            <select name="restecg" class="form-select">
 
-<select
-name="restecg"
-class="form-select">
+                                <option value="0">Normal</option>
+                                <option value="1">ST-T Abnormality</option>
+                                <option value="2">Left Ventricular Hypertrophy</option>
 
-<option value="0">Normal</option>
-<option value="1">ST-T Abnormality</option>
-<option value="2">Left Ventricular Hypertrophy</option>
+                            </select>
 
-</select>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Maximum Heart Rate
 
-Maximum Heart Rate
+                            </label>
 
-</label>
+                            <input type="number" name="thalach" class="form-control" required>
 
-<input
-type="number"
-name="thalach"
-class="form-control"
-required>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Exercise Induced Angina
 
-Exercise Induced Angina
+                            </label>
 
-</label>
+                            <select name="exang" class="form-select">
 
-<select
-name="exang"
-class="form-select">
+                                <option value="0">No</option>
+                                <option value="1">Yes</option>
 
-<option value="0">No</option>
-<option value="1">Yes</option>
+                            </select>
 
-</select>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                ST Depression
 
-ST Depression
+                            </label>
 
-</label>
+                            <input type="number" step="0.1" name="oldpeak" class="form-control" required>
 
-<input
-type="number"
-step="0.1"
-name="oldpeak"
-class="form-control"
-required>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Slope
 
-Slope
+                            </label>
 
-</label>
+                            <select name="slope" class="form-select">
 
-<select
-name="slope"
-class="form-select">
+                                <option value="0">Upsloping</option>
+                                <option value="1">Flat</option>
+                                <option value="2">Downsloping</option>
 
-<option value="0">Upsloping</option>
-<option value="1">Flat</option>
-<option value="2">Downsloping</option>
+                            </select>
 
-</select>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-3">
 
-<div class="col-md-6 mb-3">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Major Vessels
 
-Major Vessels
+                            </label>
 
-</label>
+                            <select name="ca" class="form-select">
 
-<select
-name="ca"
-class="form-select">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
 
-<option value="0">0</option>
-<option value="1">1</option>
-<option value="2">2</option>
-<option value="3">3</option>
+                            </select>
 
-</select>
+                        </div>
 
-</div>
+                        <div class="col-md-6 mb-4">
 
-<div class="col-md-6 mb-4">
+                            <label class="form-label">
 
-<label class="form-label">
+                                Thalassemia
 
-Thalassemia
+                            </label>
 
-</label>
+                            <select name="thal" class="form-select">
 
-<select
-name="thal"
-class="form-select">
+                                <option value="1">Normal</option>
+                                <option value="2">Fixed Defect</option>
+                                <option value="3">Reversible Defect</option>
 
-<option value="1">Normal</option>
-<option value="2">Fixed Defect</option>
-<option value="3">Reversible Defect</option>
+                            </select>
 
-</select>
+                        </div>
 
-</div>
+                    </div>
 
-</div>
+                    <div class="text-center">
 
-<div class="text-center">
+                        <button class="btn btn-danger btn-lg" type="submit">
 
-<button
-class="btn btn-danger btn-lg"
-type="submit">
+                            Predict Risk
 
-Predict Risk
+                        </button>
 
-</button>
+                    </div>
 
-</div>
+                </form>
 
-</form>
+                <hr class="my-5">
 
-<hr class="my-5">
+                <div id="resultCard" class="card shadow-lg p-4 text-center" style="display:none;">
 
-<div id="resultCard" class="card shadow-lg p-4 text-center" style="display:none;">
+                    <h3 id="resultTitle"></h3>
 
-    <h3 id="resultTitle"></h3>
+                    <h1 id="resultIcon" style="font-size:70px;">
+                    </h1>
 
-    <h1 id="resultIcon" style="font-size:70px;">
-    </h1>
+                    <h4 id="resultProbability"></h4>
 
-    <h4 id="resultProbability"></h4>
+                    <div class="progress mt-4">
 
-    <div class="progress mt-4">
+                        <div id="probabilityBar" class="progress-bar" style="width:0%;">
 
-        <div id="probabilityBar" class="progress-bar" style="width:0%;">
+                            0%
 
-            0%
+                        </div>
+
+                    </div>
+
+                    <p id="recommendation" class="mt-4 fs-5">
+                    </p>
+
+                    <button id="resetBtn" class="btn btn-outline-danger mt-3">
+
+                        Predict Another Patient
+
+                    </button>
+
+                </div>
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-    <p id="recommendation" class="mt-4 fs-5">
-    </p>
-
-    <button id="resetBtn" class="btn btn-outline-danger mt-3">
-
-        Predict Another Patient
-
-    </button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 
 </body>
+
 </html>
