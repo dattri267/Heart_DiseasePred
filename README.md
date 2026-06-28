@@ -1,168 +1,235 @@
-Overview
+# Heart Disease Risk Prediction using Machine Learning
 
-The Heart Disease Prediction System is a machine learning web application that predicts the likelihood of heart disease based on patient clinical parameters. The application uses a trained Random Forest Classifier and provides predictions through an interactive web interface built with Flask.
+A full-stack Machine Learning web application that predicts the likelihood of heart disease based on a patient's clinical information. The application uses a trained Random Forest Classifier and provides an intuitive interface for entering patient data and viewing prediction results.
 
-The project demonstrates the complete machine learning workflow, including data preprocessing, model training, model serialization, backend API development, and frontend integration.
+---
 
-Features
-Predicts heart disease risk using a trained machine learning model.
-Interactive and responsive user interface.
-Real-time prediction without page reload.
-Displays prediction confidence score.
-Provides health recommendations based on prediction.
-Responsive design for desktop and mobile devices.
-Tech Stack
-Backend
-Python
-Flask
-Scikit-learn
-Pandas
-NumPy
-Joblib
-Frontend
-HTML5
-CSS3
-JavaScript
-Bootstrap 5
-Machine Learning
-Random Forest Classifier
-Data preprocessing using Pandas
-Model serialization using Joblib
-Dataset
+## Overview
 
-The model was trained using the Heart Disease Dataset containing patient medical information such as:
+This project combines Machine Learning and Web Development to create an interactive healthcare application. Users can enter patient health parameters through a modern web interface, and the Flask backend processes the input, performs prediction using a trained machine learning model, and returns the predicted heart disease risk.
 
-Age
-Sex
-Chest Pain Type
-Resting Blood Pressure
-Cholesterol
-Fasting Blood Sugar
-Resting ECG
-Maximum Heart Rate
-Exercise Induced Angina
-ST Depression (Oldpeak)
-Slope
-Number of Major Vessels
-Thalassemia
-Project Structure
-heart-disease-project/
+---
+
+## Features
+
+- Interactive patient information form
+- Real-time heart disease risk prediction
+- Confidence score display
+- Feature importance visualization
+- Responsive and modern user interface
+- Flask REST API backend
+- Machine Learning model integration
+
+---
+
+## Input Features
+
+The model uses the following clinical parameters:
+
+- Age
+- Sex
+- Chest Pain Type
+- Resting Blood Pressure
+- Cholesterol
+- Fasting Blood Sugar
+- Resting ECG
+- Maximum Heart Rate
+- Exercise Induced Angina
+- ST Depression (Oldpeak)
+- Slope of ST Segment
+- Number of Major Vessels
+- Thalassemia
+
+---
+
+## Application Workflow
+
+```
+Patient Inputs Clinical Data
+            │
+            ▼
+Frontend Sends Data to Flask
+            │
+            ▼
+Data Preprocessing
+            │
+            ▼
+Random Forest Model Prediction
+            │
+            ▼
+Risk Probability Calculation
+            │
+            ▼
+Return Prediction as JSON
+            │
+            ▼
+Display Risk Assessment on Website
+```
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- HTML5
+- CSS3
+- JavaScript
+
+### Backend
+
+- Flask
+- Scikit-learn
+- Pandas
+- NumPy
+- Joblib
+
+### Machine Learning
+
+- Random Forest Classifier
+- Feature Importance Analysis
+
+---
+
+## Project Structure
+
+```
+Heart_Disease_Prediction/
 │
 ├── backend/
-│   └── app.py
+│   ├── app.py
+│   ├── heart_disease_prediction_model.joblib
+│   ├── scaler.pkl
+│   └── utils/
 │
 ├── frontend/
-│   ├── templates/
-│   │   └── index.html
-│   │
-│   └── static/
-│       ├── css/
-│       ├── js/
-│       └── images/
+│   ├── static/
+│   │   ├── css/
+│   │   ├── js/
+│   │   └── images/
+│   └── templates/
+│       └── index.html
 │
-├── model/
-│   └── heart_disease_prediction_model.joblib
-│
-├── dataset/
-│   └── heart.csv
+├── notebook/
+│   └── Heart_Disease_Prediction.ipynb
 │
 ├── requirements.txt
-├── runtime.txt
-└── README.md
-Installation
-Clone the repository
-git clone https://github.com/your-username/heart-disease-project.git
-cd heart-disease-project
-Create a virtual environment
+├── README.md
+└── .gitignore
+```
 
-Windows
+---
 
+## Model
+
+The application uses a Random Forest Classifier trained on a heart disease dataset.
+
+### Input
+
+Patient clinical parameters
+
+### Output
+
+- Low Risk
+- High Risk
+
+Along with a confidence score indicating the model's prediction certainty.
+
+---
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/Heart-Disease-Prediction.git
+```
+
+### 2. Navigate to the project
+
+```bash
+cd Heart-Disease-Prediction
+```
+
+### 3. Create a virtual environment
+
+```bash
 python -m venv .venv
+```
 
-Activate the environment
+### 4. Activate the virtual environment
 
+**Windows**
+
+```bash
 .venv\Scripts\activate
-Install dependencies
+```
+
+**Linux / macOS**
+
+```bash
+source .venv/bin/activate
+```
+
+### 5. Install dependencies
+
+```bash
 pip install -r requirements.txt
-Run the application
+```
+
+### 6. Run the application
+
+```bash
 python backend/app.py
+```
 
-The application will be available at:
+Open your browser and visit:
 
+```
 http://127.0.0.1:5000
-Input Features
-Feature	Description
-age	Age of the patient
-sex	Gender
-cp	Chest pain type
-trestbps	Resting blood pressure
-chol	Serum cholesterol
-fbs	Fasting blood sugar
-restecg	Resting ECG results
-thalach	Maximum heart rate achieved
-exang	Exercise induced angina
-oldpeak	ST depression induced by exercise
-slope	Slope of ST segment
-ca	Number of major vessels
-thal	Thalassemia type
-Model Performance
+```
 
-Algorithm Used
+---
 
-Random Forest Classifier
+## Screenshots
 
-Evaluation Metrics
+### Home Page
 
-Accuracy
-Precision
-Recall
-F1 Score
-ROC-AUC
+<img width="1226" height="715" alt="Screenshot 2026-06-29 000741" src="https://github.com/user-attachments/assets/7b4bf85c-ffd0-46f6-89f4-3b13de5a30c6" />
 
-The model was trained and evaluated using standard machine learning practices, with feature importance analysis performed to understand the contribution of each clinical parameter.
-
-Application Workflow
-User enters patient medical details.
-Data is sent to the Flask backend.
-Backend converts the input into a Pandas DataFrame.
-The trained Random Forest model generates a prediction.
-Prediction probability is calculated.
-The frontend displays:
-Prediction result
-Confidence score
-Medical recommendation
-
-
-Screenshots
-
-
-Home Page
-Prediction Form
-Positive Prediction
-Negative Prediction
+<img width="1038" height="671" alt="Screenshot 2026-06-29 000754" src="https://github.com/user-attachments/assets/12f2ce23-b830-45e1-9551-da5c44a2bffc" />
 
 
 
-Future Improvements
-Patient history management
-User authentication
-Prediction history database
-Data visualization dashboard
-Explainable AI using SHAP
-Model deployment on cloud platforms
-Docker containerization
-REST API documentation
 
+## Future Improvements
 
-Author
+- Support additional cardiovascular risk factors
+- Compare predictions from multiple machine learning models
+- Add patient history management
+- Generate downloadable prediction reports
+- Deploy the application using Render
+- Improve model explainability using SHAP values
 
-Diya Attri
+---
 
+## Learning Outcomes
 
-License
+This project helped me gain practical experience with:
 
-This project is intended for educational and learning purposes.
+- Machine Learning model deployment
+- Data preprocessing and feature engineering
+- Random Forest classification
+- Flask backend development
+- REST API integration
+- Frontend and backend communication
+- Building responsive web applications
+- Model evaluation and feature importance analysis
 
-Note
+---
 
-This application is designed for educational purposes only and should not be considered a substitute for professional medical advice, diagnosis, or treatment. Predictions generated by the model are based on historical data and should always be validated by qualified healthcare professionals.
+## Author
+
+**Diya Attri**
+
+Built as a Machine Learning and Full Stack AI deployment project using Flask and Scikit-learn.
